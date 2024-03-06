@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">ProyekAkhirBeginnerAndroid</string>
+
+    <string name="title_name">Nama Tempat Wisata</string>
+    <string name="location">Lokasi</string>
+    <string name="rating">Rating</string>
+    <string name="list_title">Lokasi Wisata Favorit</string>
+    <string name="text_detail_description_title">Description</string>
+    <string name="icon_menu_about">About Me</string>
+    <string name="text_about_name">Juan Jonathan Nursamsu</string>
+    <string name="text_about_email">juanjonathan67@gmail.com</string>
+    <string name="text_detail_share">Share</string>
+    <string-array name="tour_title">
+        <item>Raja Ampat</item>
+        <item>Labuan Bajo</item>
+        <item>Bintan</item>
+        <item>Danau Toba</item>
+        <item>Lombok</item>
+        <item>Gunung Bromo</item>
+        <item>Pulau Komodo</item>
+        <item>Wae Rebo</item>
+        <item>Danau Kelimutu</item>
+        <item>Gili Trawangan</item>
+    </string-array>
+    <string-array name="tour_description">
+        <item>Raja Ampat adalah surga tropis yang terletak di ujung barat laut Papua, Indonesia. Terkenal sebagai salah satu destinasi penyelaman terbaik di dunia, Raja Ampat menawarkan keindahan bawah laut yang luar biasa dengan terumbu karang yang sangat beragam, ikan-ikan warna-warni, dan kehidupan laut yang kaya. Selain itu, pulau-pulau di Raja Ampat juga menawarkan pantai pasir putih, hutan hijau yang lebat, dan pemandangan alam yang memukau. Daerah ini memiliki keanekaragaman hayati yang tinggi, termasuk beberapa spesies langka dan endemik. Raja Ampat menarik para pecinta alam, penyelam, dan penggemar keindahan alam yang masih alami.</item>
+        <item>Labuan Bajo adalah kota kecil yang terletak di ujung barat Pulau Flores, Indonesia. Terkenal sebagai gerbang menuju Taman Nasional Komodo, Labuan Bajo menawarkan pesona alam yang memukau dan petualangan yang tak terlupakan. Kota ini dikelilingi oleh perairan biru laut Flores yang indah, dan pelabuhan lokalnya menjadi titik awal untuk menjelajahi Kepulauan Komodo. Wisatawan dapat menikmati aktivitas menyelam, snorkeling, dan menikmati matahari terbenam yang spektakuler di Pulau Kalong. Selain itu, Labuan Bajo juga menyediakan fasilitas akomodasi, restoran, dan toko-toko suvenir untuk mendukung pengalaman wisatawan yang berkunjung ke daerah ini.</item>
+        <item>Bintan adalah sebuah pulau tropis yang terletak di lepas pantai Singapura dan Malaysia, menjadi bagian dari Kepulauan Riau, Indonesia. Dikenal sebagai destinasi wisata yang menarik, Bintan menawarkan pantai pasir putih yang indah, air laut jernih, dan kegiatan berlibur yang beragam. Pulau ini menyediakan resor-resor mewah yang menghadap ke laut, lapangan golf bertaraf internasional, dan fasilitas olahraga air seperti snorkeling, selancar angin, dan menyelam. Selain itu, Bintan juga mempertahankan kekayaan sejarah dengan situs-situs bersejarah seperti Kota Tanjung Pinang, yang mencerminkan warisan budaya dan perdagangan pulau ini. Bintan menjadi destinasi yang populer bagi wisatawan yang mencari kombinasi antara ketenangan pantai tropis dan beragam aktivitas rekreasi.</item>
+        <item>Danau Toba adalah salah satu danau vulkanik terbesar di dunia dan merupakan keajaiban alam di Pulau Sumatra, Indonesia. Terletak di ketinggian sekitar 900 meter di atas permukaan laut, danau ini terbentuk dari letusan gunung api purba yang menciptakan kaldera yang luas. Danau Toba tidak hanya menawarkan keindahan alam yang luar biasa dengan airnya yang tenang dan pegunungan yang mengelilingi, tetapi juga memiliki pulau vulkanik di tengahnya, Pulau Samosir.</item>
+        <item>Lombok adalah sebuah pulau yang terletak di sebelah timur Bali, Indonesia. Dikenal sebagai destinasi pariwisata yang menakjubkan, Lombok menawarkan keindahan alam yang beragam, mulai dari pantai-pantai eksotis dengan pasir putih halus, hingga gunung-gunung yang menjulang tinggi, termasuk Gunung Rinjani yang merupakan gunung tertinggi kedua di Indonesia. Pulau ini terkenal dengan budaya Sasaknya yang khas, yang dapat ditemui di desa-desa tradisional.</item>
+        <item>Gunung Bromo adalah salah satu gunung berapi paling ikonik di Indonesia dan merupakan bagian dari Taman Nasional Bromo Tengger Semeru di Jawa Timur. Terkenal karena pemandangannya yang dramatis, Bromo menampilkan kaldera vulkanik yang luas, pasir lautan berwarna abu-abu, serta beberapa puncak gunung, termasuk Gunung Bromo itu sendiri yang masih aktif.</item>
+        <item>Pulau Komodo, terletak di Provinsi Nusa Tenggara Timur, Indonesia, adalah tujuan wisata yang dikenal karena keunikan alam dan kehadiran hewan purba, komodo, yang menjadi ikon pulau ini. Pulau Komodo dan sekitarnya, termasuk pulau Rinca, adalah bagian dari Taman Nasional Komodo, yang diakui sebagai Warisan Dunia UNESCO.</item>
+        <item>Wae Rebo adalah sebuah desa tradisional yang terletak di lereng Gunung Rinjani di Pulau Flores, Indonesia. Desa ini terkenal karena rumah-rumah adatnya yang unik, disebut "Mbaru Niang," yang memiliki atap konus dan struktur kayu tradisional. Desa Wae Rebo diakui sebagai Warisan Budaya Dunia oleh UNESCO.</item>
+        <item>Danau Kelimutu adalah sebuah destinasi alam yang memukau di Pulau Flores, Indonesia. Terletak di kawasan Taman Nasional Kelimutu, danau ini dikenal karena tiga kalderanya yang memiliki warna air yang berbeda-beda. Setiap kaldera memiliki danau dengan warna yang unik, yakni danau Tiwu Nuwa Muri Koo Fai (biru), danau Tiwu Ata Polo (hijau), dan danau Tiwu Ata Mbupu (merah atau hitam).</item>
+        <item>Gili Trawangan adalah pulau terbesar di antara tiga pulau Gili yang terletak di lepas pantai barat laut Lombok, Indonesia. Pulau ini dikenal sebagai destinasi wisata yang populer, menarik pengunjung dengan keindahan pantainya, kehidupan malam yang hidup, dan kesempatan untuk menikmati kegiatan olahraga air.</item>
+    </string-array>
+    <string-array name="tour_location">
+        <item>Papua Barat Daya</item>
+        <item>Nusa Tenggara Timur</item>
+        <item>Kepulauan Riau</item>
+        <item>Sumatra Utara</item>
+        <item>Nusa Tenggara Barat</item>
+        <item>Jawa Timur</item>
+        <item>Nusa Tenggara Timur</item>
+        <item>Nusa Tenggara Timur</item>
+        <item>Nusa Tenggara Timur</item>
+        <item>Nusa Tenggara Barat</item>
+    </string-array>
+    <string-array name="tour_rating">
+        <item>5</item>
+        <item>4.9</item>
+        <item>4.8</item>
+        <item>4.8</item>
+        <item>4.6</item>
+        <item>4.5</item>
+        <item>4.5</item>
+        <item>4.4</item>
+        <item>4.3</item>
+        <item>4.3</item>
+    </string-array>
+    <!--    <integer-array name="data_photo">-->
+    <!--        <item>@drawable/ahmad_dahlan</item>-->
+    <!--        <item>@drawable/ahmad_yani</item>-->
+    <!--        <item>@drawable/bung_tomo</item>-->
+    <!--        <item>@drawable/gatot_subroto</item>-->
+    <!--        <item>@drawable/ki_hadjar_dewantara</item>-->
+    <!--        <item>@drawable/mohammad_hatta</item>-->
+    <!--        <item>@drawable/sudirman</item>-->
+    <!--        <item>@drawable/sukarno</item>-->
+    <!--        <item>@drawable/supomo</item>-->
+    <!--    </integer-array>-->
+    <string-array name="tour_photo">
+        <item>https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Raja_Ampat%2C_Mutiara_Indah_di_Timur_Indonesia.jpg/250px-Raja_Ampat%2C_Mutiara_Indah_di_Timur_Indonesia.jpg</item>
+        <item>https://res.klook.com/image/upload/fl_lossy.progressive,w_800,c_fill,q_85/destination/af1by2ai20nbrraxmznv.jpg</item>
+        <item>https://akcdn.detik.net.id/visual/2021/01/25/salah-satu-resor-di-bintan-kepulauan-riau-1_169.jpeg</item>
+        <item>https://awsimages.detik.net.id/community/media/visual/2022/04/30/tipang_169.jpeg</item>
+        <item>https://i0.wp.com/reporterontheroad.com/wp-content/uploads/Lombok_Indonesie56.jpg?ssl=1</item>
+        <item>https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Mount_Bromo_at_sunrise%2C_showing_its_volcanoes_and_Mount_Semeru_%28background%29.jpg/640px-Mount_Bromo_at_sunrise%2C_showing_its_volcanoes_and_Mount_Semeru_%28background%29.jpg</item>
+        <item>https://asset.kompas.com/crops/eIP2s99xXyYl2dhwW9hDQ6QxisY=/0x0:780x520/750x500/data/photo/2019/09/26/5d8c64544d656.jpg</item>
+        <item>https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Wae_Rebo_di_Pagi_Hari.jpg/1200px-Wae_Rebo_di_Pagi_Hari.jpg</item>
+        <item>https://pariwisataindonesia.id/wp-content/uploads/2022/10/Pariwisata-Indonesia-Danau-Kelimutu-NTT.jpg</item>
+        <item>https://1.bp.blogspot.com/-dPi8TAkoh1w/XmDFE_seyJI/AAAAAAAAG7M/aXUtLAkSYLk5sM13dEvJcvLoNcmG_W6EACLcBGAsYHQ/s1600/Gili%2BTrawangan%2B3.jpg</item>
+    </string-array>
+
+</resources>

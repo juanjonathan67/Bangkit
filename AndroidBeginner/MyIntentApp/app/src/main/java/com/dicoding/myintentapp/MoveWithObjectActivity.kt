@@ -18,10 +18,10 @@ class MoveWithObjectActivity : AppCompatActivity() {
         val tvObject:TextView = findViewById(R.id.tv_object_received)
 
         val person = if (Build.VERSION.SDK_INT >= 33) {
-            intent.getParcelableExtra<Person>(EXTRA_PERSON, Person::class.java)
+            intent.getParcelableExtra(EXTRA_PERSON, Person::class.java)
         } else {
             @Suppress("DEPRECATION")
-            intent.getParcelableExtra<Person>(EXTRA_PERSON)
+            intent.getParcelableExtra(EXTRA_PERSON)
         }
         if (person != null) {
             val text = "Name : ${person.name.toString()},\nEmail : ${person.email},\nAge : ${person.age},\nLocation : ${person.city}"

@@ -1,6 +1,6 @@
 package com.dicoding.githubuserapp.ui
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,7 +15,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class UserDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserDetailBinding
-
+    private lateinit var sectionsPagerAdapter: FollowPagerAdapter
     private val userDetailViewModel by viewModels<UserDetailViewModel>()
 
     companion object {
@@ -32,7 +32,7 @@ class UserDetailActivity : AppCompatActivity() {
         binding = ActivityUserDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sectionsPagerAdapter = FollowPagerAdapter(supportFragmentManager, lifecycle)
+        sectionsPagerAdapter = FollowPagerAdapter(supportFragmentManager, lifecycle)
         binding.vpFollow.adapter = sectionsPagerAdapter
 
         val user = if (Build.VERSION.SDK_INT >= 33) {
@@ -48,6 +48,8 @@ class UserDetailActivity : AppCompatActivity() {
 
         userDetailViewModel.userDetail.observe(this) { userDetail ->
             setUserDetail(userDetail)
+            userDetailViewModel.getUserFollowers(userDetail.login)
+            userDetailViewModel.getUserFollowing(userDetail.login)
         }
 
         userDetailViewModel.isLoading.observe(this) {
@@ -59,7 +61,6 @@ class UserDetailActivity : AppCompatActivity() {
         supportActionBar?.elevation = 0f
     }
 
-    @SuppressLint("SetTextI18n")
     private fun setUserDetail(userDetail: UserDetailResponse) {
         Glide.with(this)
             .load(userDetail.avatarUrl)
@@ -71,6 +72,7 @@ class UserDetailActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabs, binding.vpFollow) { tab, position ->
             tab.text = resources.getString(TAB_TITLES[position]) + " (" + followArr[position] + ")"
         }.attach()
+        sectionsPagerAdapter.notifyDataSetChanged()
     }
 
     private fun showLoading(isLoading: Boolean) {

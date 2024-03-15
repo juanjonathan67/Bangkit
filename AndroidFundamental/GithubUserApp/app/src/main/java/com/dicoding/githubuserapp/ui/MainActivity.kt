@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         binding.topAppBar.setNavigationOnClickListener { recreate() }
     }
 
-    private fun setUserData(listUser: MutableList<UserDetailResponse?>) {
+    private fun setUserData(listUser: List<UserDetailResponse?>) {
         val listUserAdapter = ListUserAdapter(listUser)
         listUserAdapter.submitList(listUser)
         binding.rvMain.adapter = listUserAdapter

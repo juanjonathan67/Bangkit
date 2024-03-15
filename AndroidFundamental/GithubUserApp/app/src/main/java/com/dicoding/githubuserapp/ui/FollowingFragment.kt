@@ -39,14 +39,31 @@ class FollowingFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvFollowing.layoutManager = layoutManager
 
+        userDetailViewModel.userFollowing.observe(viewLifecycleOwner) {userFollowing ->
+            for (following in userFollowing) {
+                userDetailViewModel.getUserFollowingDetails(following.login)
+            }
+        }
+
         userDetailViewModel.followingDetail.observe(viewLifecycleOwner) {userFollowers ->
             setUserFollowing(userFollowers)
         }
     }
 
-    private fun setUserFollowing(userFollowing: MutableList<UserDetailResponse?>) {
-        val adapter = FollowAdapter(userFollowing)
-        adapter.submitList(userFollowing)
-        binding.rvFollowing.adapter = adapter
+    private fun setUserFollowing(userFollowing: List<UserDetailResponse?>) {
+        val followingAdapter = FollowAdapter(userFollowing)
+        followingAdapter.submitList(userFollowing)
+        binding.rvFollowing.adapter = followingAdapter
+
+        followingAdapter.setOnItemClickCallback(object : FollowAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: UserDetailResponse?) {
+                showUserDetails(data)
+            }
+        })
+    }
+
+    private fun showUserDetails(data: UserDetailResponse?) {
+        requireActivity().intent.putExtra(UserDetailActivity.EXTRA_USER, data)
+        requireActivity().recreate()
     }
 }

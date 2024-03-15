@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.dicoding.githubuserapp.data.response.UserDetailResponse
 import com.dicoding.githubuserapp.databinding.ItemRowUserBinding
 
-class FollowAdapter(private val listFollower: MutableList<UserDetailResponse?>) : ListAdapter<UserDetailResponse, FollowAdapter.FollowViewHolder>(DIFF_CALLBACK) {
+class FollowAdapter(private val listFollower: List<UserDetailResponse?>) : ListAdapter<UserDetailResponse, FollowAdapter.FollowViewHolder>(DIFF_CALLBACK) {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {

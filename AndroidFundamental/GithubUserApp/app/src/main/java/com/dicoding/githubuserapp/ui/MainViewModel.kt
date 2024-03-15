@@ -16,11 +16,13 @@ class MainViewModel : ViewModel() {
     private val _user: MutableLiveData<List<ItemsItem>> = MutableLiveData()
     val user: LiveData<List<ItemsItem>> = _user
 
-    private val _userDetail: MutableLiveData<MutableList<UserDetailResponse?>> = MutableLiveData()
-    val userDetail: LiveData<MutableList<UserDetailResponse?>> = _userDetail
+    private val _userDetail: MutableLiveData<List<UserDetailResponse?>> = MutableLiveData()
+    val userDetail: LiveData<List<UserDetailResponse?>> = _userDetail
 
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: LiveData<Boolean> = _isLoading
+
+    private val listTemp: MutableList<UserDetailResponse?> = mutableListOf()
 
     companion object{
         private const val TAG = "MainViewModel"
@@ -39,8 +41,8 @@ class MainViewModel : ViewModel() {
                 response: Response<UserResponse>
             ) {
                 if (response.isSuccessful) {
-                    _userDetail.value = mutableListOf()
-                    _user.value = response.body()?.items
+                    listTemp.clear()
+                    _user.postValue(response.body()?.items)
                     _isLoading.value = false
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
@@ -62,7 +64,8 @@ class MainViewModel : ViewModel() {
                 response: Response<UserDetailResponse>
             ) {
                 if (response.isSuccessful) {
-                    _userDetail.value?.add(response.body())
+                    listTemp.add(response.body())
+                    _userDetail.postValue(listTemp)
                     _isLoading.value = false
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")

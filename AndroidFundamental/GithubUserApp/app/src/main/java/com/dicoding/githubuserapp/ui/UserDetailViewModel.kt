@@ -21,22 +21,20 @@ class UserDetailViewModel : ViewModel() {
     private val _userFollowing = MutableLiveData<List<FollowResponseItem>>()
     val userFollowing: LiveData<List<FollowResponseItem>> = _userFollowing
 
-    private val _followersDetail = MutableLiveData<MutableList<UserDetailResponse?>>()
-    val followersDetail: LiveData<MutableList<UserDetailResponse?>> = _followersDetail
+    private val _followersDetail = MutableLiveData<List<UserDetailResponse?>>()
+    val followersDetail: LiveData<List<UserDetailResponse?>> = _followersDetail
 
-    private val _followingDetail = MutableLiveData<MutableList<UserDetailResponse?>>()
-    val followingDetail: LiveData<MutableList<UserDetailResponse?>> = _followingDetail
+    private val _followingDetail = MutableLiveData<List<UserDetailResponse?>>()
+    val followingDetail: LiveData<List<UserDetailResponse?>> = _followingDetail
+
+    private val listTempFollower: MutableList<UserDetailResponse?> = mutableListOf()
+    private val listTempFollowing: MutableList<UserDetailResponse?> = mutableListOf()
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
     companion object{
         private const val TAG = "UserDetailViewModel"
-    }
-
-    init {
-        _followersDetail.value = mutableListOf()
-        _followingDetail.value = mutableListOf()
     }
 
     fun getUserDetails(username: String) {
@@ -49,9 +47,8 @@ class UserDetailViewModel : ViewModel() {
             ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
-                    _userDetail.value = response.body()
-                    getUserFollowers(username)
-                    getUserFollowing(username)
+                    _userDetail.postValue(response.body())
+                    _isLoading.value = false
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
@@ -73,10 +70,8 @@ class UserDetailViewModel : ViewModel() {
             ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
-                    _userFollowers.value = response.body()
-                    for (follower in _userFollowers.value!!) {
-                        getUserFollowerDetails(follower.login)
-                    }
+                    _userFollowers.postValue(response.body())
+                    _isLoading.value = false
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
@@ -98,10 +93,8 @@ class UserDetailViewModel : ViewModel() {
             ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
-                    _userFollowing.value = response.body()
-                    for (follower in _userFollowing.value!!) {
-                        getUserFollowingDetails(follower.login)
-                    }
+                    _userFollowing.postValue(response.body())
+                    _isLoading.value = false
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
@@ -123,7 +116,9 @@ class UserDetailViewModel : ViewModel() {
             ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
-                    _followersDetail.value?.add(response.body())
+                    listTempFollower.add(response.body())
+                    _followersDetail.postValue(listTempFollower)
+                    _isLoading.value = false
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
@@ -145,7 +140,9 @@ class UserDetailViewModel : ViewModel() {
             ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
-                    _followingDetail.value?.add(response.body())
+                    listTempFollowing.add(response.body())
+                    _followingDetail.postValue(listTempFollowing)
+                    _isLoading.value = false
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }

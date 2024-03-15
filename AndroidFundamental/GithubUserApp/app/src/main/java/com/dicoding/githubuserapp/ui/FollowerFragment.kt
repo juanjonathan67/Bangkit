@@ -1,5 +1,6 @@
 package com.dicoding.githubuserapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -41,15 +42,32 @@ class FollowerFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireActivity())
         binding.rvFollower.layoutManager = layoutManager
 
-        userDetailViewModel.followersDetail.observe(viewLifecycleOwner) {userFollowers ->
-            setUserFollowers(userFollowers)
+        userDetailViewModel.userFollowers.observe(viewLifecycleOwner) {userFollowers ->
+            for (follower in userFollowers) {
+                userDetailViewModel.getUserFollowerDetails(follower.login)
+            }
+        }
+
+        userDetailViewModel.followersDetail.observe(viewLifecycleOwner) {followerDetails ->
+            setUserFollowers(followerDetails)
         }
     }
 
-    private fun setUserFollowers(userFollowers: MutableList<UserDetailResponse?>) {
-        val adapter = FollowAdapter(userFollowers)
-        adapter.submitList(userFollowers)
-        binding.rvFollower.adapter = adapter
+    private fun setUserFollowers(userFollowers: List<UserDetailResponse?>) {
+        val followerAdapter = FollowAdapter(userFollowers)
+        followerAdapter.submitList(userFollowers)
+        binding.rvFollower.adapter = followerAdapter
+
+        followerAdapter.setOnItemClickCallback(object : FollowAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: UserDetailResponse?) {
+                showUserDetails(data)
+            }
+        })
+    }
+
+    private fun showUserDetails(data: UserDetailResponse?) {
+        requireActivity().intent.putExtra(UserDetailActivity.EXTRA_USER, data)
+        requireActivity().recreate()
     }
 
 }

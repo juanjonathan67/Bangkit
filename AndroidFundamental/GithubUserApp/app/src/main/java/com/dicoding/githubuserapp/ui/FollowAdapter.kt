@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.dicoding.githubuserapp.data.response.UserDetailResponse
 import com.dicoding.githubuserapp.databinding.ItemRowUserBinding
 
-class FollowAdapter(private val listFollower: List<UserDetailResponse?>) : ListAdapter<UserDetailResponse, FollowAdapter.FollowViewHolder>(DIFF_CALLBACK) {
+class FollowAdapter() : ListAdapter<UserDetailResponse, FollowAdapter.FollowViewHolder>(DIFF_CALLBACK) {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -25,7 +25,7 @@ class FollowAdapter(private val listFollower: List<UserDetailResponse?>) : ListA
         holder.bind(user)
 
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(listFollower[holder.adapterPosition])
+            onItemClickCallback.onItemClicked(getItem(holder.adapterPosition))
         }
     }
     class FollowViewHolder(private val binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -42,7 +42,7 @@ class FollowAdapter(private val listFollower: List<UserDetailResponse?>) : ListA
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<UserDetailResponse>() {
             override fun areItemsTheSame(oldItem: UserDetailResponse, newItem: UserDetailResponse): Boolean {
-                return oldItem == newItem
+                return oldItem.id == newItem.id
             }
             override fun areContentsTheSame(oldItem: UserDetailResponse, newItem: UserDetailResponse): Boolean {
                 return oldItem == newItem

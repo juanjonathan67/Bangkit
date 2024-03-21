@@ -3,15 +3,11 @@ package com.dicoding.githubuserapp.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.githubuserapp.data.response.UserDetailResponse
 import com.dicoding.githubuserapp.databinding.ActivityMainBinding
-import okhttp3.internal.notify
-import okhttp3.internal.notifyAll
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -58,7 +54,10 @@ class MainActivity : AppCompatActivity() {
             showLoading(it)
         }
 
-        binding.topAppBar.setNavigationOnClickListener { recreate() }
+        binding.topAppBar.setNavigationOnClickListener {
+            finish()
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 
     private fun setUserData(listUser: List<UserDetailResponse?>) {

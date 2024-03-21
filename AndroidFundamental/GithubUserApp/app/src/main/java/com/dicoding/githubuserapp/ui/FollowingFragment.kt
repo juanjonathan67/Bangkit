@@ -1,5 +1,6 @@
 package com.dicoding.githubuserapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,8 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.githubuserapp.data.response.FollowResponse
-import com.dicoding.githubuserapp.data.response.FollowResponseItem
 import com.dicoding.githubuserapp.data.response.UserDetailResponse
 import com.dicoding.githubuserapp.databinding.FragmentFollowingBinding
 
@@ -51,7 +50,7 @@ class FollowingFragment : Fragment() {
     }
 
     private fun setUserFollowing(userFollowing: List<UserDetailResponse?>) {
-        val followingAdapter = FollowAdapter(userFollowing)
+        val followingAdapter = FollowAdapter()
         followingAdapter.submitList(userFollowing)
         binding.rvFollowing.adapter = followingAdapter
 
@@ -63,7 +62,8 @@ class FollowingFragment : Fragment() {
     }
 
     private fun showUserDetails(data: UserDetailResponse?) {
-        requireActivity().intent.putExtra(UserDetailActivity.EXTRA_USER, data)
-        requireActivity().recreate()
+        val userDetailIntent = Intent(requireActivity(), UserDetailActivity::class.java)
+        userDetailIntent.putExtra(UserDetailActivity.EXTRA_USER, data)
+        startActivity(userDetailIntent)
     }
 }

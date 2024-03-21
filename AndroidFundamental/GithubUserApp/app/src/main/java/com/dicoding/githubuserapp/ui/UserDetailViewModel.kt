@@ -27,8 +27,8 @@ class UserDetailViewModel : ViewModel() {
     private val _followingDetail = MutableLiveData<List<UserDetailResponse?>>()
     val followingDetail: LiveData<List<UserDetailResponse?>> = _followingDetail
 
-    private val listTempFollower: MutableList<UserDetailResponse?> = mutableListOf()
-    private val listTempFollowing: MutableList<UserDetailResponse?> = mutableListOf()
+    private var listTempFollower: MutableList<UserDetailResponse?> = mutableListOf()
+    private var listTempFollowing: MutableList<UserDetailResponse?> = mutableListOf()
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -47,6 +47,10 @@ class UserDetailViewModel : ViewModel() {
             ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
+                    listTempFollower = mutableListOf()
+                    _followersDetail.postValue(listTempFollower.toList())
+                    listTempFollowing = mutableListOf()
+                    _followingDetail.postValue(listTempFollowing.toList())
                     _userDetail.postValue(response.body())
                     _isLoading.value = false
                 } else {
@@ -117,7 +121,7 @@ class UserDetailViewModel : ViewModel() {
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     listTempFollower.add(response.body())
-                    _followersDetail.postValue(listTempFollower)
+                    _followersDetail.postValue(listTempFollower.toList())
                     _isLoading.value = false
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
@@ -141,7 +145,7 @@ class UserDetailViewModel : ViewModel() {
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     listTempFollowing.add(response.body())
-                    _followingDetail.postValue(listTempFollowing)
+                    _followingDetail.postValue(listTempFollowing.toList())
                     _isLoading.value = false
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")

@@ -12,12 +12,14 @@ activity = "1.8.0"
 constraintlayout = "2.1.4"
 mockitoCore = "4.4.0"
 runner = "x.x.x"
+runnerVersion = "1.5.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-espresso-core-vxxx = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCoreVersion" }
 androidx-rules = { module = "androidx.test:rules", version.ref = "runner" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
+androidx-runner-v152 = { module = "androidx.test:runner", version.ref = "runnerVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

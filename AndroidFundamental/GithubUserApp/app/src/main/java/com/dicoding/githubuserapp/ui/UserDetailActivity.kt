@@ -1,12 +1,11 @@
 package com.dicoding.githubuserapp.ui
 
-import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import androidx.annotation.StringRes
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.dicoding.githubuserapp.R
 import com.dicoding.githubuserapp.data.response.UserDetailResponse
@@ -16,7 +15,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class UserDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserDetailBinding
     private lateinit var sectionsPagerAdapter: FollowPagerAdapter
-    private val userDetailViewModel by viewModels<UserDetailViewModel>()
+    private lateinit var userDetailViewModel: UserDetailViewModel
 
     companion object {
         const val EXTRA_USER = "extra_user"
@@ -32,7 +31,9 @@ class UserDetailActivity : AppCompatActivity() {
         binding = ActivityUserDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sectionsPagerAdapter = FollowPagerAdapter(supportFragmentManager, lifecycle)
+        userDetailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[UserDetailViewModel::class.java]
+
+        sectionsPagerAdapter = FollowPagerAdapter(this)
         binding.vpFollow.adapter = sectionsPagerAdapter
 
         val user = if (Build.VERSION.SDK_INT >= 33) {
@@ -72,7 +73,6 @@ class UserDetailActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabs, binding.vpFollow) { tab, position ->
             tab.text = resources.getString(TAB_TITLES[position]) + " (" + followArr[position] + ")"
         }.attach()
-        sectionsPagerAdapter.notifyDataSetChanged()
     }
 
     private fun showLoading(isLoading: Boolean) {

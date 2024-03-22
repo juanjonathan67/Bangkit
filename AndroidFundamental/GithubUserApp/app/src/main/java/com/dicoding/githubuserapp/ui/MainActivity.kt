@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.githubuserapp.R
 import com.dicoding.githubuserapp.data.response.UserDetailResponse
 import com.dicoding.githubuserapp.databinding.ActivityMainBinding
 
@@ -29,6 +30,18 @@ class MainActivity : AppCompatActivity() {
         mainViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
 
         supportActionBar?.hide()
+        binding.topAppBar.setOnMenuItemClickListener {menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_favorite -> {
+                    val favoriteActivityIntent = Intent(this, FavoritesActivity::class.java)
+                    startActivity(favoriteActivityIntent)
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
 
         binding.searchView.setupWithSearchBar(binding.searchBar)
 
@@ -52,11 +65,6 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.isLoading.observe(this) {
             showLoading(it)
-        }
-
-        binding.topAppBar.setNavigationOnClickListener {
-            finish()
-            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
@@ -86,4 +94,5 @@ class MainActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
         }
     }
+
 }

@@ -1,5 +1,6 @@
 package com.dicoding.githubuserapp.ui
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -58,9 +59,29 @@ class UserDetailActivity : AppCompatActivity() {
         }
 
         binding.topAppBar.setNavigationOnClickListener { finish() }
-
+        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_home -> {
+                    val mainActivityIntent = Intent(this, MainActivity::class.java)
+                    mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    mainActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(mainActivityIntent)
+                    true
+                }
+                R.id.menu_favorite -> {
+                    val favoriteActivityIntent = Intent(this, FavoritesActivity::class.java)
+                    startActivity(favoriteActivityIntent)
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
         supportActionBar?.elevation = 0f
     }
+
 
     private fun setUserDetail(userDetail: UserDetailResponse) {
         Glide.with(this)

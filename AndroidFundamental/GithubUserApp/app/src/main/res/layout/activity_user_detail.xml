@@ -26,8 +26,10 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/black"
                 app:menu="@menu/options_menu"
-                app:navigationIcon="@drawable/ic_github_40dp"
+                app:logo="@drawable/ic_github_40dp"
+                app:navigationIcon="@drawable/ic_back_40dp"
                 app:title="User Details"
+                app:titleMarginStart="16dp"
                 app:titleTextColor="@color/white" />
 
         </com.google.android.material.appbar.AppBarLayout>

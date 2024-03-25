@@ -11,4 +11,8 @@
     <string name="tab_text_2">Following</string>
     <string name="menu_home">Menu Home</string>
     <string name="menu_favorite">Menu Favorite\n</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="favorite_button">Favorite Button</string>
+    <string name="menu_dark">Menu Dark</string>
+    <string name="dark_mode">Dark Mode</string>
 </resources>

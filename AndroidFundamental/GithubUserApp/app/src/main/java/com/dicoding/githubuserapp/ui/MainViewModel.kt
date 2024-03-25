@@ -1,80 +1,45 @@
 package com.dicoding.githubuserapp.ui
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.githubuserapp.data.response.ItemsItem
-import com.dicoding.githubuserapp.data.response.UserDetailResponse
-import com.dicoding.githubuserapp.data.response.UserResponse
-import com.dicoding.githubuserapp.data.retrofit.ApiConfig
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.switchMap
+import androidx.lifecycle.viewModelScope
+import com.dicoding.githubuserapp.data.UserRepository
+import com.dicoding.githubuserapp.data.local.entity.UserEntity
+import com.dicoding.githubuserapp.data.Result
+import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
-    private val _user: MutableLiveData<List<ItemsItem>> = MutableLiveData()
-    val user: LiveData<List<ItemsItem>> = _user
-
-    private val _userDetail: MutableLiveData<List<UserDetailResponse?>> = MutableLiveData()
-    val userDetail: LiveData<List<UserDetailResponse?>> = _userDetail
-
-    private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
-    val isLoading: LiveData<Boolean> = _isLoading
-
-    private val listTemp: MutableList<UserDetailResponse?> = mutableListOf()
-
-    companion object{
-        private const val TAG = "MainViewModel"
-    }
+class MainViewModel(private val userRepository: UserRepository) : ViewModel() {
+    private val query = MutableLiveData<String>()
+    private val username = MutableLiveData<String>()
+    val user: LiveData<Result<List<UserEntity>>> = query.switchMap { getUserFromRepo() }
+    val userDetails: LiveData<Result<List<UserEntity>>> = username.switchMap { getUserDetailsFromRepo() }
+    lateinit var pref: SettingPreferences
 
     init {
-        getUser("Arif")
+        query.value = "arif"
     }
 
-    fun getUser(query: String) {
-        _isLoading.value = true
-        val client = ApiConfig.getApiService().getUsers(query)
-        client.enqueue(object : Callback<UserResponse> {
-            override fun onResponse(
-                call: Call<UserResponse>,
-                response: Response<UserResponse>
-            ) {
-                if (response.isSuccessful) {
-                    listTemp.clear()
-                    _user.postValue(response.body()?.items)
-                    _isLoading.value = false
-                } else {
-                    Log.e(TAG, "onFailure: ${response.message()}")
-                }
-            }
-            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                _isLoading.value = false
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
-            }
-        })
+    fun getThemeSettings(): LiveData<Boolean> {
+        return pref.getThemeSetting().asLiveData()
     }
 
-    fun getUserDetails(username: String) {
-        _isLoading.value = true
-        val client = ApiConfig.getApiService().getUserDetails(username)
-        client.enqueue(object : Callback<UserDetailResponse> {
-            override fun onResponse(
-                call: Call<UserDetailResponse>,
-                response: Response<UserDetailResponse>
-            ) {
-                if (response.isSuccessful) {
-                    listTemp.add(response.body())
-                    _userDetail.postValue(listTemp)
-                    _isLoading.value = false
-                } else {
-                    Log.e(TAG, "onFailure: ${response.message()}")
-                }
-            }
-            override fun onFailure(call: Call<UserDetailResponse>, t: Throwable) {
-                _isLoading.value = false
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
-            }
-        })
+    fun saveThemeSetting(isDarkModeActive: Boolean) {
+        viewModelScope.launch {
+            pref.saveThemeSetting(isDarkModeActive)
+        }
     }
+
+    private fun getUserFromRepo() = userRepository.getUser(query.value ?: "")
+
+    fun getUser(q: String) = apply { query.value = q }
+
+    private fun getUserDetailsFromRepo() = userRepository.getUserDetails( username.value ?: "" )
+
+    fun getUserDetails(q : String) = apply { username.value = q }
+
+    fun setFavoriteUser(userEntity: UserEntity, favoriteState: Boolean) = userRepository.setFavoriteUser(userEntity, favoriteState)
+
 }

@@ -1,11 +1,11 @@
-package com.dicoding.githubuserapp.data.response
+package com.dicoding.githubuserapp.data.remote.response
 
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 @Parcelize
-data class UserDetailResponse(
+data class UserDetailsResponse(
 
 	@field:SerializedName("gists_url")
 	val gistsUrl: String? = null,

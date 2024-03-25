@@ -1,14 +1,24 @@
-package com.dicoding.githubuserapp.data.response
+package com.dicoding.githubuserapp.data.remote.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
-data class FollowResponse(
+data class UserResponse(
 
-	@field:SerializedName("FollowResponse")
-	val followResponse: List<FollowResponseItem>
+
+	@field:SerializedName("total_count")
+	val totalCount: Int,
+
+	@field:SerializedName("incomplete_results")
+	val incompleteResults: Boolean,
+
+	@field:SerializedName("items")
+	val items: List<ItemsItem>
 )
 
-data class FollowResponseItem(
+@Parcelize
+data class ItemsItem(
 
 	@field:SerializedName("gists_url")
 	val gistsUrl: String,
@@ -37,6 +47,9 @@ data class FollowResponseItem(
 	@field:SerializedName("subscriptions_url")
 	val subscriptionsUrl: String,
 
+	@field:SerializedName("score")
+	val score: Double,
+
 	@field:SerializedName("received_events_url")
 	val receivedEventsUrl: String,
 
@@ -63,4 +76,4 @@ data class FollowResponseItem(
 
 	@field:SerializedName("organizations_url")
 	val organizationsUrl: String
-)
+): Parcelable

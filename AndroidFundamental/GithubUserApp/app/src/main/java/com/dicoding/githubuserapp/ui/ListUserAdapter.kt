@@ -1,15 +1,18 @@
 package com.dicoding.githubuserapp.ui
 
 import android.view.LayoutInflater
+import android.view.View.OnClickListener
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dicoding.githubuserapp.data.response.UserDetailResponse
+import com.dicoding.githubuserapp.R
+import com.dicoding.githubuserapp.data.local.entity.UserEntity
 import com.dicoding.githubuserapp.databinding.ItemRowUserBinding
 
-class ListUserAdapter(private val listUser: List<UserDetailResponse?>) : ListAdapter<UserDetailResponse, ListUserAdapter.UserViewHolder>(DIFF_CALLBACK) {
+class ListUserAdapter (private val onFavoriteClick: (UserEntity) -> Unit) : ListAdapter<UserEntity, ListUserAdapter.UserViewHolder>(DIFF_CALLBACK) {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -24,12 +27,19 @@ class ListUserAdapter(private val listUser: List<UserDetailResponse?>) : ListAda
         holder.bind(user)
 
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(listUser[holder.adapterPosition])
+            onItemClickCallback.onItemClicked(getItem(holder.adapterPosition))
+        }
+
+        val btFavorite = holder.binding.btFavorite
+        btFavorite.isActivated = (user.isFavorite == true)
+        btFavorite.setOnClickListener {
+            onFavoriteClick(user)
+            btFavorite.isActivated = !btFavorite.isActivated
         }
     }
-    class UserViewHolder(private val binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
+    class UserViewHolder(val binding: ItemRowUserBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(user: UserDetailResponse){
+        fun bind(user: UserEntity){
             binding.tvItemFullname.text = user.name
             binding.tvItemUsername.text = user.login
             "${user.publicRepos.toString()} repositories".also { binding.tvItemRepositories.text = it }
@@ -39,17 +49,18 @@ class ListUserAdapter(private val listUser: List<UserDetailResponse?>) : ListAda
         }
     }
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<UserDetailResponse>() {
-            override fun areItemsTheSame(oldItem: UserDetailResponse, newItem: UserDetailResponse): Boolean {
-                return oldItem == newItem
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<UserEntity>() {
+            override fun areItemsTheSame(oldItem: UserEntity, newItem: UserEntity): Boolean {
+                return oldItem.id == newItem.id
             }
-            override fun areContentsTheSame(oldItem: UserDetailResponse, newItem: UserDetailResponse): Boolean {
-                return oldItem.login == newItem.login && oldItem.name == newItem.name
+            override fun areContentsTheSame(oldItem: UserEntity, newItem: UserEntity): Boolean {
+                return oldItem == newItem
             }
         }
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: UserDetailResponse?)
+        fun onItemClicked(data: UserEntity)
     }
+
 }

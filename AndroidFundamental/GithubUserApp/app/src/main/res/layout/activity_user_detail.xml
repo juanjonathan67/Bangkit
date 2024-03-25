@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundPrimary"
+    style="@style/Background.Page"
     tools:context=".ui.UserDetailActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -24,13 +24,12 @@
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/black"
+                style="@style/Background.TopAppBar"
                 app:menu="@menu/options_menu"
                 app:logo="@drawable/ic_github_40dp"
                 app:navigationIcon="@drawable/ic_back_40dp"
                 app:title="User Details"
-                app:titleMarginStart="16dp"
-                app:titleTextColor="@color/white" />
+                app:titleMarginStart="16dp" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -54,9 +53,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_user_profile"
         android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        android:textColor="@color/blueLink"
-        android:textStyle="bold"
+        style="@style/TextStyle.Name"
         tools:text="Firstname Lastname"/>
 
     <TextView
@@ -67,8 +64,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFullName"
         android:layout_marginTop="5dp"
-        android:textSize="16sp"
-        android:textColor="@color/white"
+        style="@style/TextStyle.Username"
         tools:text="username"/>
 
     <com.google.android.material.tabs.TabLayout
@@ -76,14 +72,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/backgroundPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvUserName"
-        app:tabIndicatorColor="@color/white"
-        app:tabSelectedTextColor="@color/white"
-        app:tabIndicatorFullWidth="true"
-        app:tabTextColor="@color/gray" />
+        style="@style/Background.TabLayout" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpFollow"

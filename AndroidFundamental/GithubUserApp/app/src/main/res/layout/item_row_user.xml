@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroundSecondary"
+        style="@style/Background.ListItem"
         android:padding="8dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -33,9 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
+            style="@style/TextStyle.Name"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@+id/img_item_photo"
             card_view:layout_constraintTop_toTopOf="@+id/img_item_photo"
@@ -46,8 +44,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            android:textSize="16sp"
-            android:textColor="@color/white"
+            style="@style/TextStyle.Username"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@+id/img_item_photo"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_item_fullname"
@@ -58,7 +55,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:src="@drawable/github_repo_icon"
+            android:src="@drawable/ic_repo_24dp"
+            android:contentDescription="@string/profile_picture"
             card_view:layout_constraintBottom_toBottomOf="@+id/img_item_photo"
             card_view:layout_constraintStart_toEndOf="@+id/img_item_photo" />
 
@@ -67,12 +65,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:textColor="@color/white"
-            android:textSize="16sp"
+            style="@style/TextStyle.Username"
             card_view:layout_constraintBottom_toBottomOf="@+id/imageView"
             card_view:layout_constraintStart_toEndOf="@+id/imageView"
             card_view:layout_constraintTop_toTopOf="@+id/imageView"
             tools:text="@string/repositories" />
+
+        <ImageView
+            android:id="@+id/btFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Background.ListItem"
+            android:src="@drawable/favorite_button_selector"
+            android:contentDescription="@string/favorite_button"
+            android:tag="Not Favorite"
+            android:clickable="true"
+            card_view:layout_constraintBottom_toBottomOf="@+id/imageView"
+            card_view:layout_constraintEnd_toEndOf="@+id/tv_item_username" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

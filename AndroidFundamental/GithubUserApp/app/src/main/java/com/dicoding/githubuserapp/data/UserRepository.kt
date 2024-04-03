@@ -286,11 +286,11 @@ class UserRepository private constructor(
         private var instance: UserRepository? = null
         fun getInstance(
             apiService: ApiService,
-            newsDao: UserDao,
+            userDao: UserDao,
             appExecutors: AppExecutors
         ): UserRepository =
             instance ?: synchronized(this) {
-                instance ?: UserRepository(apiService, newsDao, appExecutors)
+                instance ?: UserRepository(apiService, userDao, appExecutors)
             }.also { instance = it }
     }
 

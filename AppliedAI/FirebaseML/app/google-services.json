@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "397960809964",
+    "project_id": "fir-ml-dicoding-3425e",
+    "storage_bucket": "fir-ml-dicoding-3425e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397960809964:android:6eb984516531c10bf9c4c9",
+        "android_client_info": {
+          "package_name": "com.dicoding.firebaseml"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5H1zg5rqU_-4TPyJag4xJindxMxoFau4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

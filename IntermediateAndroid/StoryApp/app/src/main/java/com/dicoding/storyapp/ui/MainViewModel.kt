@@ -1,14 +1,13 @@
 package com.dicoding.storyapp.ui
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dicoding.storyapp.data.Repository
 import com.dicoding.storyapp.data.Result
+import com.dicoding.storyapp.data.remote.response.ErrorResponse
 import com.dicoding.storyapp.data.remote.response.LoginResponse
-import com.dicoding.storyapp.data.remote.response.RegisterResponse
 import kotlinx.coroutines.launch
 
 class MainViewModel (private val repository: Repository) : ViewModel() {
@@ -17,8 +16,8 @@ class MainViewModel (private val repository: Repository) : ViewModel() {
         name: String,
         email: String,
         password: String
-    ) : LiveData<Result<RegisterResponse>> {
-        val result: MutableLiveData<Result<RegisterResponse>> = MutableLiveData(Result.Loading)
+    ) : LiveData<Result<ErrorResponse>> {
+        val result: MutableLiveData<Result<ErrorResponse>> = MutableLiveData(Result.Loading)
         viewModelScope.launch {
             result.value = repository.register(name, email, password)
         }

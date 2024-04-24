@@ -2,8 +2,31 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.StoryApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
     </style>
 
     <style name="Theme.StoryApp" parent="Base.Theme.StoryApp" />
+
+    <style name="text_title" parent="@style/TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_body" parent="@style/TextAppearance.MaterialComponents.Body1">
+
+    </style>
+
+    <style name="text_subtitle" parent="@style/TextAppearance.MaterialComponents.Subtitle2">
+
+    </style>
+
+    <style name="text_subtitle.light" parent="@style/text_subtitle">
+        <item name="android:textColor">@color/blue_gray_500</item>
+    </style>
+
+    <style name="button" parent="@style/TextAppearance.MaterialComponents.Button" >
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/blue_gray_900</item>
+    </style>
+
 </resources>

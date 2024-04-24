@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">StoryApp</string>
+    <string name="">StoryApp</string>
+    <string name="app_logo">App Logo</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="welcome_title">Welcome to Dicoding Story!</string>
+    <string name="welcome_body">Share your stories and experiences while learning at Dicoding!</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email Address</string>
+    <string name="password_error">Password must be more than 8 characters</string>
+    <string name="email_error">Incorrect email format</string>
+    <string name="register_question">Haven\'t signed up?</string>
+    <string name="register_here">Register here</string>
+    <string name="register_success">Register success</string>
+    <string name="login_question">Already signed up?</string>
+    <string name="login_here">Login here</string>
+    <string name="login_success">Login success</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
 </resources>

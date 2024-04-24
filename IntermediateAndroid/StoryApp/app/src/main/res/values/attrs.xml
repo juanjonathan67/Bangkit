@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomTextField">
+        <attr name="mode" format="flags">
+            <flag name="text" value="0" />
+            <flag name="email" value="1" />
+            <flag name="password" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

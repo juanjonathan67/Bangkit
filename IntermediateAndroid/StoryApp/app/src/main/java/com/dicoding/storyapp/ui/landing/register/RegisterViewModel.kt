@@ -1,4 +1,4 @@
-package com.dicoding.storyapp.ui
+package com.dicoding.storyapp.ui.landing.register
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,10 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.dicoding.storyapp.data.Repository
 import com.dicoding.storyapp.data.Result
 import com.dicoding.storyapp.data.remote.response.ErrorResponse
-import com.dicoding.storyapp.data.remote.response.LoginResponse
 import kotlinx.coroutines.launch
 
-class MainViewModel (private val repository: Repository) : ViewModel() {
+class RegisterViewModel (private val repository: Repository) : ViewModel() {
 
     fun register (
         name: String,
@@ -23,16 +22,4 @@ class MainViewModel (private val repository: Repository) : ViewModel() {
         }
         return result
     }
-
-    fun login (
-        email: String,
-        password: String
-    ) : LiveData<Result<LoginResponse>> {
-        val result: MutableLiveData<Result<LoginResponse>> = MutableLiveData(Result.Loading)
-        viewModelScope.launch {
-            result.value = repository.login(email, password)
-        }
-        return result
-    }
-
 }

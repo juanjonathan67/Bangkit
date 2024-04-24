@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_logo">App Logo</string>
+    <string name="welcome_title">Selamat Datang di Dicoding Story!</string>
+    <string name="welcome_body">Bagikan cerita dan pengalamanmu salam belajar di Dicoding!</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="email">Alamat Email</string>
+    <string name="password_error">Kata sandi harus memiliki lebih dari 8 karakter</string>
+    <string name="email_error">Format alamat email salah</string>
+    <string name="register_question">Belum daftar?</string>
+    <string name="register_here">Daftar disini</string>
+    <string name="register_success">Dafter berhasil</string>
+    <string name="login_question">Sudah daftar?</string>
+    <string name="login_here">Masuk disini</string>
+    <string name="login_success">Masuk berhasil</string>
+    <string name="name">Nama</string>
+    <string name="password">Kata Sandi</string>
+</resources>

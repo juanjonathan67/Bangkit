@@ -13,6 +13,6 @@ object Injection {
         val prefs = UserPreferences.getInstance(context.datastore)
         val token = runBlocking { prefs.getUserToken().first() }
         val apiService = ApiConfig.getApiService(token)
-        return Repository.getInstance(apiService)
+        return Repository.getInstance(apiService, prefs)
     }
 }

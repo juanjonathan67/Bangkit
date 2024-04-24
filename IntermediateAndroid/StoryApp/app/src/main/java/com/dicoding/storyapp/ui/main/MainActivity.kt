@@ -1,26 +1,27 @@
-package com.dicoding.storyapp.ui
+package com.dicoding.storyapp.ui.main
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
 import com.dicoding.storyapp.R
 import com.dicoding.storyapp.data.Result
+import com.dicoding.storyapp.utils.UserPreferences
 import com.dicoding.storyapp.utils.ViewModelFactory
+import com.dicoding.storyapp.utils.datastore
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private val mainViewModel by viewModels<MainViewModel> { ViewModelFactory.getInstance(this) }
+    private lateinit var prefs : UserPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mainViewModel.login("juanjonathan67@gmail.com", "123Juan123;'").observe(this) { result ->
+        mainViewModel.getStories().observe(this@MainActivity) { result ->
             if (result != null) {
                 when (result) {
                     is Result.Loading -> {
@@ -35,7 +36,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
     private fun showLog(text: String) {

@@ -1,44 +1,32 @@
 package com.dicoding.storyapp.ui.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.dicoding.storyapp.R
 import com.dicoding.storyapp.data.Result
+import com.dicoding.storyapp.databinding.ActivityMainBinding
+import com.dicoding.storyapp.ui.landing.LandingActivity
 import com.dicoding.storyapp.utils.UserPreferences
 import com.dicoding.storyapp.utils.ViewModelFactory
 import com.dicoding.storyapp.utils.datastore
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
-    private val mainViewModel by viewModels<MainViewModel> { ViewModelFactory.getInstance(this) }
-    private lateinit var prefs : UserPreferences
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        mainViewModel.getStories().observe(this@MainActivity) { result ->
-            if (result != null) {
-                when (result) {
-                    is Result.Loading -> {
-                        showLog("Loading Now")
-                    }
-                    is Result.Error -> {
-                        showLog(result.error)
-                    }
-                    is Result.Success -> {
-                        showLog(result.data.toString())
-                    }
-                }
-            }
-        }
     }
 
-    private fun showLog(text: String) {
-        Log.d("Testing Coroutine", text)
-    }
 }

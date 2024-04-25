@@ -1,5 +1,5 @@
 <resources>
-    <string name="">StoryApp</string>
+    <string name="app_name" translatable="false">Dicoding Story</string>
     <string name="app_logo">App Logo</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="welcome_title">Welcome to Dicoding Story!</string>
@@ -17,4 +17,10 @@
     <string name="login_success">Login success</string>
     <string name="name">Name</string>
     <string name="password">Password</string>
+    <string name="settings">Settings</string>
+    <string name="settings_button">Settings button</string>
+    <string name="language">Language</string>
+    <string name="logout">Logout</string>
+    <string name="story_image">Story Image</string>
+    <string name="add_story_button">Add story button</string>
 </resources>

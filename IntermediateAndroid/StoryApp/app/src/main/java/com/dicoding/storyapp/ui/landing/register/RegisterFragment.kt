@@ -33,9 +33,9 @@ class RegisterFragment : Fragment() {
 
         binding.btRegister.setOnClickListener {
             registerViewModel.register(
-                binding.tfName.text.toString(),
-                binding.tfEmail.text.toString(),
-                binding.tfPassword.text.toString()
+                binding.edRegisterName.text.toString(),
+                binding.edRegisterEmail.text.toString(),
+                binding.edRegisterPassword.text.toString()
             ).observe(requireActivity()) { result ->
                 if(result != null) {
                     when(result){

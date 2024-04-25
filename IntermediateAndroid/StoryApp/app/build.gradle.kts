@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -66,6 +67,7 @@ dependencies {
 
     // image utils
     implementation("androidx.exifinterface:exifinterface:1.3.7")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // testing
     testImplementation(libs.junit)

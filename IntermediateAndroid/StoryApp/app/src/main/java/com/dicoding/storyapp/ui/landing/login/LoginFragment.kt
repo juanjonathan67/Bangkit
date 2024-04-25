@@ -7,14 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.dicoding.storyapp.R
 import com.dicoding.storyapp.data.Result
 import com.dicoding.storyapp.databinding.FragmentLoginBinding
 import com.dicoding.storyapp.ui.main.MainActivity
-import com.dicoding.storyapp.ui.main.MainViewModel
 import com.dicoding.storyapp.utils.ViewModelFactory
 
 class LoginFragment : Fragment() {
@@ -34,8 +32,8 @@ class LoginFragment : Fragment() {
 
         binding.btLogin.setOnClickListener {
             loginViewModel.login(
-                binding.tfEmail.text.toString(),
-                binding.tfPassword.text.toString()
+                binding.edLoginEmail.text.toString(),
+                binding.edLoginPassword.text.toString()
             ).observe(requireActivity()) {result ->
                 if(result != null) {
                     when(result){

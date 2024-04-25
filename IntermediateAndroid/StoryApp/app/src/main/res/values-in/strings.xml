@@ -16,4 +16,8 @@
     <string name="login_success">Masuk berhasil</string>
     <string name="name">Nama</string>
     <string name="password">Kata Sandi</string>
+    <string name="settings">Pengaturan</string>
+    <string name="settings_button">Tombol pengaturan</string>
+    <string name="language">Bahasa</string>
+    <string name="logout">Keluar</string>
 </resources>

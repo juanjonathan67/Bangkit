@@ -18,14 +18,60 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import java.util.Date
 import java.util.Locale
 
+private const val DATE_PATTERN = "E, d MMMM yyyy HH:mm"
 private const val FILENAME_FORMAT = "yyyyMMdd_HHmmss"
 private val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(Date())
 private const val MAXIMAL_SIZE = 1000000
 
 fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+
+fun parseTimeInstant(dateTime: String): String {
+    val formatter: DateTimeFormatter = DateTimeFormatter.ISO_INSTANT
+    val parsedInstant = Instant.from(formatter.parse(dateTime))
+    val localDateTime = LocalDateTime.ofInstant(parsedInstant, ZoneId.systemDefault())
+    val stringDateTimeFormatter = DateTimeFormatter.ofPattern(DATE_PATTERN, Locale.getDefault())
+
+    return localDateTime.format(stringDateTimeFormatter)
+}
+
+fun parseTimeInstantRelative(dateTime: String): String {
+    val formatter: DateTimeFormatter = DateTimeFormatter.ISO_INSTANT
+    val parsedInstant = Instant.from(formatter.parse(dateTime))
+    val currentInstant = Instant.now()
+
+    val parsedZonedDateTime = ZonedDateTime.ofInstant(parsedInstant, ZoneId.systemDefault())
+    val currentZonedDateTime = ZonedDateTime.ofInstant(currentInstant, ZoneId.systemDefault())
+
+    val differenceYears = ChronoUnit.YEARS.between(parsedZonedDateTime, currentZonedDateTime)
+    val differenceMonths = ChronoUnit.MONTHS.between(parsedZonedDateTime, currentZonedDateTime)
+    val differenceWeeks = ChronoUnit.WEEKS.between(parsedZonedDateTime, currentZonedDateTime)
+    val differenceDays = ChronoUnit.DAYS.between(parsedZonedDateTime, currentZonedDateTime)
+    val differenceHours = ChronoUnit.HOURS.between(parsedZonedDateTime, currentZonedDateTime)
+    val differenceMinutes = ChronoUnit.MINUTES.between(parsedZonedDateTime, currentZonedDateTime)
+
+    return when {
+        differenceYears > 0 -> "$differenceYears year${addPluralTime(differenceYears)} ago"
+        differenceMonths > 0 -> "$differenceMonths month${addPluralTime(differenceMonths)} ago"
+        differenceWeeks > 0 -> "$differenceWeeks week${addPluralTime(differenceWeeks)} ago"
+        differenceDays > 0 -> "$differenceDays day${addPluralTime(differenceDays)} ago"
+        differenceHours > 0 -> "$differenceHours hour${addPluralTime(differenceHours)} ago"
+        differenceMinutes > 0 -> "$differenceMinutes minute${addPluralTime(differenceMinutes)} ago"
+        else -> "Less than a minute ago"
+    }
+}
+
+fun addPluralTime(value: Long): String {
+    return if (value > 1) "s" else ""
+}
 
 fun getImageUri(context: Context): Uri {
     var uri: Uri? = null

@@ -4,6 +4,7 @@ import android.net.Uri
 import com.dicoding.storyapp.data.remote.response.ErrorResponse
 import com.dicoding.storyapp.data.remote.response.LoginResponse
 import com.dicoding.storyapp.data.remote.response.StoriesResponse
+import com.dicoding.storyapp.data.remote.response.StoryResponse
 import com.dicoding.storyapp.data.remote.retrofit.ApiService
 import com.dicoding.storyapp.utils.UserPreferences
 import com.dicoding.storyapp.utils.uriToFile
@@ -85,6 +86,19 @@ class Repository private constructor(
             try {
                 val storiesResponse = apiService.getStories()
                 return@withContext Result.Success(storiesResponse)
+            } catch (e : HttpException) {
+                val errorBody = e.response()?.errorBody()?.string()
+                val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
+                return@withContext Result.Error(errorResponse.message)
+            }
+        }
+    }
+
+    suspend fun getStoryDetail (storyId: String) : Result<StoryResponse> {
+        return withContext(Dispatchers.IO) {
+            try {
+                val storyDetailResponse = apiService.getStoryDetail(storyId)
+                return@withContext Result.Success(storyDetailResponse)
             } catch (e : HttpException) {
                 val errorBody = e.response()?.errorBody()?.string()
                 val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)

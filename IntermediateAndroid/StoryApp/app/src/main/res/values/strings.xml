@@ -23,4 +23,12 @@
     <string name="logout">Logout</string>
     <string name="story_image">Story Image</string>
     <string name="add_story_button">Add story button</string>
+    <string name="add_image">Add Image</string>
+    <string name="radio_choose_local">Local Image</string>
+    <string name="radio_choose_url">Image URL</string>
+    <string name="choose_image">Choose Image</string>
+    <string name="image_url">Image URL</string>
+    <string name="description">Description</string>
+    <string name="selected_image_preview">Selected image preview</string>
+    <string name="add_story">Add Story</string>
 </resources>

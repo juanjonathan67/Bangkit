@@ -57,19 +57,19 @@ class Repository private constructor(
         }
     }
 
-    suspend fun uploadStoryGuest (
+    suspend fun uploadStory (
         imageFile: File,
         description: String
     ) : Result<ErrorResponse> {
-        val requestBody = description.toRequestBody("text/plain".toMediaType())
-        val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
-        val multipartBody = MultipartBody.Part.createFormData(
-            "photo",
-            imageFile.name,
-            requestImageFile
-        )
-
         return withContext(Dispatchers.IO) {
+            val requestBody = description.toRequestBody("text/plain".toMediaType())
+            val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+            val multipartBody = MultipartBody.Part.createFormData(
+                "photo",
+                imageFile.name,
+                requestImageFile
+            )
+
             try {
                 val errorResponse = apiService.uploadStory(file = multipartBody, description = requestBody)
                 return@withContext Result.Success(errorResponse)

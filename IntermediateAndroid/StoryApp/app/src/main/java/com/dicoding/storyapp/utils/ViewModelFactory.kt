@@ -7,6 +7,7 @@ import com.dicoding.storyapp.data.Repository
 import com.dicoding.storyapp.di.Injection
 import com.dicoding.storyapp.ui.landing.login.LoginViewModel
 import com.dicoding.storyapp.ui.landing.register.RegisterViewModel
+import com.dicoding.storyapp.ui.main.addStory.AddStoryViewModel
 import com.dicoding.storyapp.ui.main.stories.StoriesViewModel
 import com.dicoding.storyapp.ui.main.storyDetail.StoryDetailViewModel
 
@@ -19,6 +20,7 @@ class ViewModelFactory private constructor (private val repository: Repository)
         RegisterViewModel::class.java -> RegisterViewModel(repository)
         StoriesViewModel::class.java -> StoriesViewModel(repository)
         StoryDetailViewModel::class.java -> StoryDetailViewModel(repository)
+        AddStoryViewModel::class.java -> AddStoryViewModel(repository)
         else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     } as T
 

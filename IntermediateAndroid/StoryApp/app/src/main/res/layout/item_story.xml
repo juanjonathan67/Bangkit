@@ -22,6 +22,7 @@
             android:paddingVertical="4dp"
             android:paddingHorizontal="8dp"
             android:maxLines="1"
+            android:transitionName="name"
             tools:text="@tools:sample/lorem" />
 
         <ImageView
@@ -31,6 +32,7 @@
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:contentDescription="@string/story_image"
+            android:transitionName="photo"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -41,6 +43,7 @@
             android:paddingHorizontal="8dp"
             android:paddingTop="2dp"
             android:maxLines="1"
+            android:transitionName="created"
             tools:text="@tools:sample/lorem" />
 
 
@@ -53,6 +56,7 @@
             android:paddingHorizontal="8dp"
             android:maxLines="3"
             android:ellipsize="end"
+            android:transitionName="description"
             tools:text="@tools:sample/lorem/random" />
 
     </LinearLayout>

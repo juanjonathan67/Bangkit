@@ -17,6 +17,7 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
+import java.net.URL
 import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.LocalDateTime
@@ -27,18 +28,18 @@ import java.time.temporal.ChronoUnit
 import java.util.Date
 import java.util.Locale
 
-private const val DATE_PATTERN = "E, d MMMM yyyy HH:mm"
+private const val DATE_PATTERN = "EE, d MMMM yyyy HH:mm"
 private const val FILENAME_FORMAT = "yyyyMMdd_HHmmss"
 private val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(Date())
 private const val MAXIMAL_SIZE = 1000000
 
 fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
 
-fun parseTimeInstant(dateTime: String): String {
+fun parseTimeInstant(dateTime: String, locale: Locale): String {
     val formatter: DateTimeFormatter = DateTimeFormatter.ISO_INSTANT
     val parsedInstant = Instant.from(formatter.parse(dateTime))
     val localDateTime = LocalDateTime.ofInstant(parsedInstant, ZoneId.systemDefault())
-    val stringDateTimeFormatter = DateTimeFormatter.ofPattern(DATE_PATTERN, Locale.getDefault())
+    val stringDateTimeFormatter = DateTimeFormatter.ofPattern(DATE_PATTERN, locale)
 
     return localDateTime.format(stringDateTimeFormatter)
 }
@@ -106,8 +107,17 @@ fun createCustomTempFile(context: Context): File {
 }
 
 fun uriToFile(imageUri: Uri, context: Context): File {
-    val myFile = createCustomTempFile(context)
     val inputStream = context.contentResolver.openInputStream(imageUri) as InputStream
+    return inputStreamToFile(inputStream, context)
+}
+
+fun urlToFile(imageUrl: URL, context: Context): File {
+    val inputStream = imageUrl.openStream()
+    return inputStreamToFile(inputStream, context)
+}
+
+private fun inputStreamToFile(inputStream: InputStream, context: Context): File {
+    val myFile = createCustomTempFile(context)
     val outputStream = FileOutputStream(myFile)
     val buffer = ByteArray(1024)
     var length: Int
@@ -116,6 +126,7 @@ fun uriToFile(imageUri: Uri, context: Context): File {
     inputStream.close()
     return myFile
 }
+
 
 fun File.reduceFileImage(): File {
     val file = this

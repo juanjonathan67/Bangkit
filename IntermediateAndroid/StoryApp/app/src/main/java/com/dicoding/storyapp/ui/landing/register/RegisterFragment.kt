@@ -1,6 +1,5 @@
 package com.dicoding.storyapp.ui.landing.register
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,12 +11,10 @@ import androidx.navigation.Navigation
 import com.dicoding.storyapp.R
 import com.dicoding.storyapp.data.Result
 import com.dicoding.storyapp.databinding.FragmentRegisterBinding
-import com.dicoding.storyapp.ui.landing.login.LoginViewModel
-import com.dicoding.storyapp.ui.main.MainActivity
 import com.dicoding.storyapp.utils.ViewModelFactory
 
 class RegisterFragment : Fragment() {
-    private val registerViewModel by viewModels<RegisterViewModel> { ViewModelFactory.getInstance(requireContext()) }
+    private val registerViewModel by viewModels<RegisterViewModel> { ViewModelFactory.getAuthInstance(requireContext()) }
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(

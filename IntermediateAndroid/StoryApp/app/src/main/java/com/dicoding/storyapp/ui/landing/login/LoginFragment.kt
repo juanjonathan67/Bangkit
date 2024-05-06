@@ -16,7 +16,7 @@ import com.dicoding.storyapp.ui.main.MainActivity
 import com.dicoding.storyapp.utils.ViewModelFactory
 
 class LoginFragment : Fragment() {
-    private val loginViewModel by viewModels<LoginViewModel> { ViewModelFactory.getInstance(requireContext()) }
+    private val loginViewModel by viewModels<LoginViewModel> { ViewModelFactory.getAuthInstance(requireContext()) }
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(

@@ -69,6 +69,13 @@ dependencies {
     implementation("androidx.exifinterface:exifinterface:1.3.7")
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
+    // cameraX
+    val cameraxVersion = "1.3.3"
+    implementation("androidx.camera:camera-camera2:$cameraxVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+    implementation("androidx.camera:camera-view:$cameraxVersion")
+
+
     // testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -20,4 +20,20 @@
     <string name="settings_button">Tombol pengaturan</string>
     <string name="language">Bahasa</string>
     <string name="logout">Keluar</string>
+    <string name="story_image">Gambar Cerita</string>
+    <string name="add_story_button">Tombol tambah cerita</string>
+    <string name="add_image">Tambah Gambar</string>
+    <string name="radio_choose_local">Gambar Lokal</string>
+    <string name="radio_choose_url">URL Gambar</string>
+    <string name="choose_image">Pilih Gambar</string>
+    <string name="image_url">URL Gambar</string>
+    <string name="description">Deskripsi</string>
+    <string name="selected_image_preview">Tampilan gambar terpilih</string>
+    <string name="add_story">Tambah Cerita</string>
+    <string name="take_photo">Ambil Foto</string>
+    <string name="capture_image">Ambil gambar</string>
+    <string name="switch_camera_side">Ganti sisi kamera</string>
+    <string name="app_widget_description">Tambahkan widget untuk melihat aplikasi Dicoding Story pada halaman utama anda</string>
+    <string name="add_widget">Tambahkan widget</string>
+    <string name="empty_text">TIDAK ADA DATA</string>
 </resources>

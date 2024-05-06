@@ -31,4 +31,11 @@
     <string name="description">Description</string>
     <string name="selected_image_preview">Selected image preview</string>
     <string name="add_story">Add Story</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="capture_image">Capture image</string>
+    <string name="switch_camera_side">Switch camera side</string>
+    <string name="appwidget_text" translatable="false">Dicoding Story Widget</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">Add widget to preview Dicoding Story application on your homescreen</string>
+    <string name="empty_text">NO DATA</string>
 </resources>

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_storiesFragment_to_storyDetailFragment"
             app:destination="@id/storyDetailFragment" />
+        <action
+            android:id="@+id/action_storiesFragment_to_addStoryFragment"
+            app:destination="@id/addStoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/storyDetailFragment"
@@ -25,5 +28,10 @@
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>
+    <fragment
+        android:id="@+id/addStoryFragment"
+        android:name="com.dicoding.storyapp.ui.main.addStory.AddStoryFragment"
+        android:label="fragment_add_story"
+        tools:layout="@layout/fragment_add_story" />
 
 </navigation>

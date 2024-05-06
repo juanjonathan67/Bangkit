@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Firebase Chat</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="send_success">Berhasil terkirim</string>
+    <string name="send_error">Gagal terkirim</string>
+    <string name="web_client_id">503808617123–5ir4dppfo3rn4h8kjp9d0f2t001sj1j6.apps.googleusercontent.com</string>
+</resources>

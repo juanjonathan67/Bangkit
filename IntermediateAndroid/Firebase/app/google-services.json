@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "503808617123-7ar6maetmo41kkcnjbopej23nakkl0r2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dicoding.myfirebasechat",
+            "certificate_hash": "0724e367700e275047df2592db10e9ead3b5c603"
+          }
+        },
+        {
           "client_id": "503808617123-5ir4dppfo3rn4h8kjp9d0f2t001sj1j6.apps.googleusercontent.com",
           "client_type": 3
         }

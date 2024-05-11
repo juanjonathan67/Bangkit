@@ -1,12 +1,17 @@
 package com.dicoding.myfirebasechat
 
+import android.Manifest
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.myfirebasechat.databinding.ActivityMainBinding
+import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
@@ -19,11 +24,27 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseDatabase
+    private lateinit var adapter: FirebaseMessageAdapter
+
+    private val requestNotificationPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                Toast.makeText(this, "Notifications permission granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Notifications permission rejected", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (Build.VERSION.SDK_INT >= 33) {
+            requestNotificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
 
         auth = Firebase.auth
         val firebaseUser = auth.currentUser
@@ -53,6 +74,16 @@ class MainActivity : AppCompatActivity() {
             }
             binding.messageEditText.setText("")
         }
+
+        val manager = LinearLayoutManager(this)
+        manager.stackFromEnd = true
+        binding.messageRecyclerView.layoutManager = manager
+
+        val options = FirebaseRecyclerOptions.Builder<Message>()
+            .setQuery(messagesRef, Message::class.java)
+            .build()
+        adapter = FirebaseMessageAdapter(options, firebaseUser.displayName)
+        binding.messageRecyclerView.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -75,6 +106,15 @@ class MainActivity : AppCompatActivity() {
         auth.signOut()
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        adapter.startListening()
+    }
+    public override fun onPause() {
+        adapter.stopListening()
+        super.onPause()
     }
 
     companion object {

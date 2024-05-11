@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dicoding.storyapp.data.AuthRepository
 import com.dicoding.storyapp.data.Result
 import com.dicoding.storyapp.data.StoryRepository
 import com.dicoding.storyapp.data.remote.response.StoryResponse

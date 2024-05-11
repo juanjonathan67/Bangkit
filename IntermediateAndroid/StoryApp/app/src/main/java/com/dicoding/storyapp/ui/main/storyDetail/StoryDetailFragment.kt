@@ -1,8 +1,8 @@
 package com.dicoding.storyapp.ui.main.storyDetail
 
-import android.content.Intent
+import android.location.Geocoder
+import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.transition.TransitionInflater
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,26 +10,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.dicoding.storyapp.R
 import com.dicoding.storyapp.data.Result
 import com.dicoding.storyapp.databinding.FragmentStoryDetailBinding
-import com.dicoding.storyapp.ui.landing.LandingActivity
-import com.dicoding.storyapp.utils.UserPreferences
 import com.dicoding.storyapp.utils.ViewModelFactory
-import com.dicoding.storyapp.utils.datastore
 import com.dicoding.storyapp.utils.parseTimeInstant
-import kotlinx.coroutines.runBlocking
 import java.time.Instant
+import java.util.Locale
 
 class StoryDetailFragment : Fragment() {
     private var _binding: FragmentStoryDetailBinding? = null
     private val binding get() = _binding!!
     private val storiesViewModel by viewModels<StoryDetailViewModel> { ViewModelFactory.getStoryInstance(requireContext()) }
-    private val args: StoryDetailFragmentArgs by navArgs()
-    private lateinit var prefs : UserPreferences
+    private lateinit var geocoder: Geocoder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,10 +42,6 @@ class StoryDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        prefs = UserPreferences.getInstance(requireContext().datastore)
-
-//        val storyId = args.storyId ?: ""
-
         val storyId = arguments?.getString("story_id") ?: ""
 
         storiesViewModel.getStoryDetail(storyId).observe(viewLifecycleOwner) { result ->
@@ -69,6 +59,22 @@ class StoryDetailFragment : Fragment() {
                             .load(result.data.story.photoUrl)
                             .into(binding.ivDetailPhoto)
 
+                        if ((result.data.story.lat != null && result.data.story.lat > -90 && result.data.story.lat < 90) && (result.data.story.lon != null && result.data.story.lon > -180 && result.data.story.lon < 180)) {
+                            geocoder = Geocoder(binding.root.context, Locale.getDefault())
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                                geocoder.getFromLocation(result.data.story.lat.toDouble(), result.data.story.lon.toDouble(), 1) { addresses ->
+                                    ((addresses[0].locality ?: "Unknown") + ", " + (addresses[0].countryName ?: "Unknown")).also {
+                                        binding.tvLocation.text = it
+                                    }
+                                }
+                            } else {
+                                val addresses = geocoder.getFromLocation(result.data.story.lat.toDouble(), result.data.story.lon.toDouble(), 1)
+                                ((addresses?.get(0)?.locality ?: "Unknown") + ", " + (addresses?.get(0)?.countryName ?: "Unknown")).also { binding.tvLocation.text = it }
+                            }
+                        } else {
+                            binding.tvLocation.visibility = View.GONE
+                        }
+
                         binding.tvDetailName.text = result.data.story.name
                         binding.tvDetailCreated.text = parseTimeInstant(result.data.story.createdAt ?: Instant.now().toString(), resources.configuration.locales.get(0))
                         binding.tvDetailDescription.text = result.data.story.description
@@ -77,32 +83,6 @@ class StoryDetailFragment : Fragment() {
                 }
             }
         }
-
-        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
-            when(menuItem.itemId) {
-                R.id.language_settings -> {
-                    startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
-                    true
-                }
-                R.id.action_logout -> {
-                    runBlocking {
-                        prefs.deleteUserToken()
-                    }
-                    val landingIntent = Intent(requireActivity(), LandingActivity::class.java)
-                    landingIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(landingIntent)
-                    true
-                }
-                else -> {
-                    false
-                }
-            }
-        }
-
-        binding.topAppBar.setNavigationOnClickListener {
-            findNavController().popBackStack()
-        }
-
     }
 
 
@@ -113,10 +93,6 @@ class StoryDetailFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    companion object {
-        const val ARGS_KEY = "STORY_ID"
     }
 
 }

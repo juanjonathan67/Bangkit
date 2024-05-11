@@ -36,6 +36,17 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
+            android:id="@+id/tvLocation"
+            style="@style/text_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="2dp"
+            android:paddingTop="2dp"
+            app:drawableStartCompat="@drawable/ic_location_24dp"
+            android:transitionName="location"
+            tools:text="Jakarta" />
+
+        <TextView
             android:id="@+id/tv_item_created"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

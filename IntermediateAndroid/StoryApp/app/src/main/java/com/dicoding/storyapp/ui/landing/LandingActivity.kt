@@ -2,18 +2,12 @@ package com.dicoding.storyapp.ui.landing
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
-import com.dicoding.storyapp.R
 import com.dicoding.storyapp.databinding.ActivityLandingBinding
 import com.dicoding.storyapp.ui.main.MainActivity
 import com.dicoding.storyapp.utils.UserPreferences
 import com.dicoding.storyapp.utils.datastore
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class LandingActivity : AppCompatActivity() {

@@ -1,22 +1,14 @@
 package com.dicoding.storyapp.ui.main.stories
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dicoding.storyapp.data.AuthRepository
-import com.dicoding.storyapp.data.Result
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.dicoding.storyapp.data.StoryRepository
-import com.dicoding.storyapp.data.remote.response.StoriesResponse
-import kotlinx.coroutines.launch
+import com.dicoding.storyapp.data.remote.response.ListStoryItem
 
 class StoriesViewModel (private val storyRepository: StoryRepository?) : ViewModel() {
-    fun getStories () : LiveData<Result<StoriesResponse>> {
-        val result: MutableLiveData<Result<StoriesResponse>> = MutableLiveData(Result.Loading)
-        viewModelScope.launch {
-            result.value = storyRepository?.getStories()
-        }
-        return result
-    }
 
+    val stories: LiveData<PagingData<ListStoryItem>>? = storyRepository?.getStories()?.cachedIn(viewModelScope)
 }

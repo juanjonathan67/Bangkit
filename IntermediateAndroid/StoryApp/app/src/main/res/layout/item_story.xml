@@ -50,7 +50,7 @@
             android:id="@+id/tv_item_created"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/text_subtitle.light"
+            style="@style/text_subtitle.secondary"
             android:paddingHorizontal="8dp"
             android:paddingTop="2dp"
             android:maxLines="1"

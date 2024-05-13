@@ -1,4 +1,4 @@
-package com.dicoding.storyapp
+package com.dicoding.myunlimitedquotes
 
 import org.junit.Test
 

@@ -70,7 +70,7 @@
         app:mode="password" />
 
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btRegister"
         style="@style/button"
         android:layout_width="125dp"
@@ -95,7 +95,7 @@
 
     <TextView
         android:id="@+id/btLogin"
-        style="@style/text_subtitle.light"
+        style="@style/text_subtitle.secondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_here"

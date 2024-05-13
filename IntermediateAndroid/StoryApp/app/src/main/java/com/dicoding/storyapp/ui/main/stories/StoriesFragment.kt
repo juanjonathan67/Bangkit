@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,11 +33,14 @@ class StoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setStories()
-
         binding.fabAddStory.setOnClickListener {
             findNavController().navigate(StoriesFragmentDirections.actionStoriesFragmentToAddStoryFragment())
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setStories()
     }
 
     private fun setStories() {
@@ -51,6 +55,8 @@ class StoriesFragment : Fragment() {
         storiesViewModel.stories?.observe(viewLifecycleOwner) {
             storiesAdapter.submitData(lifecycle, it)
         }
+
+        storiesAdapter.refresh()
 
         val itemStoryView = ItemStoryBinding.inflate(layoutInflater)
 

@@ -1,0 +1,12 @@
+[submodule "Pokedex"]
+	path = Pokedex
+	url = https://github.com/juanjonathan67/Pokedex.git
+[submodule "github-user"]
+	path = github-user
+	url = https://github.com/juanjonathan67/github-user.git
+[submodule "cancer-detector"]
+	path = cancer-detector
+	url = https://github.com/juanjonathan67/cancer-detector.git
+[submodule "dicoding-story"]
+	path = dicoding-story
+	url = https://github.com/juanjonathan67/dicoding-story.git

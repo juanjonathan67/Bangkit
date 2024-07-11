@@ -10,3 +10,6 @@
 [submodule "dicoding-story"]
 	path = dicoding-story
 	url = https://github.com/juanjonathan67/dicoding-story.git
+[submodule "CASION"]
+	path = CASION
+	url = https://github.com/juanjonathan67/CASION.git

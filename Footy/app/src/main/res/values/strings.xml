@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Footy</string>
+
+    <string name="home">Home</string>
+    <string name="matches">Matches</string>
+    <string name="transfers">Transfers</string>
+    <string name="players">Players</string>
+</resources>

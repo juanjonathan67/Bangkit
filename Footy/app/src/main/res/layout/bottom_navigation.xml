@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/BottomNavBarCard">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        style="@style/BottomNavBar"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
+
+</com.google.android.material.card.MaterialCardView>

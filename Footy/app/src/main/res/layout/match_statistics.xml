@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/stats_middle_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.5"
+        android:orientation="vertical" />
+
+    <TextView
+        android:id="@+id/shots_on_goal_stats_title"
+        style="@style/TitleLarge"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Shots On Goal"/>
+
+    <ImageView
+        android:id="@+id/shots_on_goal_stats_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/shots_on_goal_stats_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_background" />
+
+    <ImageView
+        android:id="@+id/shots_on_goal_stats_left"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/shots_on_goal_stats_title"
+        app:layout_constraintEnd_toStartOf="@id/stats_middle_guideline"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_left" />
+
+    <ImageView
+        android:id="@+id/shots_on_goal_stats_right"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/shots_on_goal_stats_title"
+        app:layout_constraintStart_toEndOf="@id/stats_middle_guideline"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_right" />
+
+    <TextView
+        android:id="@+id/shots_on_goal_stats_left_value"
+        style="@style/BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/shots_on_goal_stats_background"
+        app:layout_constraintBottom_toBottomOf="@id/shots_on_goal_stats_background"
+        app:layout_constraintEnd_toStartOf="@id/shots_on_goal_stats_background"
+        android:layout_marginEnd="8dp"
+        tools:text="12"/>
+
+    <TextView
+        android:id="@+id/shots_on_goal_stats_right_value"
+        style="@style/BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/shots_on_goal_stats_background"
+        app:layout_constraintBottom_toBottomOf="@id/shots_on_goal_stats_background"
+        app:layout_constraintStart_toEndOf="@id/shots_on_goal_stats_background"
+        android:layout_marginStart="8dp"
+        tools:text="10"/>
+
+    <TextView
+        android:id="@+id/total_shots_stats_title"
+        style="@style/TitleLarge"
+        app:layout_constraintTop_toTopOf="@id/shots_on_goal_stats_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Total Shots"/>
+
+    <ImageView
+        android:id="@+id/total_shots_stats_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/total_shots_stats_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_background" />
+
+    <ImageView
+        android:id="@+id/total_shots_stats_left"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/total_shots_stats_title"
+        app:layout_constraintEnd_toStartOf="@id/stats_middle_guideline"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_left" />
+
+    <ImageView
+        android:id="@+id/total_shots_stats_right"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/total_shots_stats_title"
+        app:layout_constraintStart_toEndOf="@id/stats_middle_guideline"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_right" />
+
+    <TextView
+        android:id="@+id/total_shots_stats_left_value"
+        style="@style/BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/total_shots_stats_background"
+        app:layout_constraintBottom_toBottomOf="@id/total_shots_stats_background"
+        app:layout_constraintEnd_toStartOf="@id/total_shots_stats_background"
+        android:layout_marginEnd="8dp"
+        tools:text="12"/>
+
+    <TextView
+        android:id="@+id/total_shots_stats_right_value"
+        style="@style/BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/total_shots_stats_background"
+        app:layout_constraintBottom_toBottomOf="@id/total_shots_stats_background"
+        app:layout_constraintStart_toEndOf="@id/total_shots_stats_background"
+        android:layout_marginStart="8dp"
+        tools:text="10"/>
+
+    <TextView
+        android:id="@+id/ball_possession_stats_title"
+        style="@style/TitleLarge"
+        app:layout_constraintTop_toTopOf="@id/total_shots_stats_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Ball Possession"/>
+
+    <ImageView
+        android:id="@+id/ball_possession_stats_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ball_possession_stats_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_background" />
+
+    <ImageView
+        android:id="@+id/ball_possession_stats_left"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/ball_possession_stats_title"
+        app:layout_constraintEnd_toStartOf="@id/stats_middle_guideline"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_left" />
+
+    <ImageView
+        android:id="@+id/ball_possession_stats_right"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/ball_possession_stats_title"
+        app:layout_constraintStart_toEndOf="@id/stats_middle_guideline"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_right" />
+
+    <TextView
+        android:id="@+id/ball_possession_stats_left_value"
+        style="@style/BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/ball_possession_stats_background"
+        app:layout_constraintBottom_toBottomOf="@id/ball_possession_stats_background"
+        app:layout_constraintEnd_toStartOf="@id/ball_possession_stats_background"
+        android:layout_marginEnd="8dp"
+        tools:text="12"/>
+
+    <TextView
+        android:id="@+id/ball_possession_stats_right_value"
+        style="@style/BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/ball_possession_stats_background"
+        app:layout_constraintBottom_toBottomOf="@id/ball_possession_stats_background"
+        app:layout_constraintStart_toEndOf="@id/ball_possession_stats_background"
+        android:layout_marginStart="8dp"
+        tools:text="10"/>
+
+    <TextView
+        android:id="@+id/fouls_stats_title"
+        style="@style/TitleLarge"
+        app:layout_constraintTop_toTopOf="@id/ball_possession_stats_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Fouls"/>
+
+    <ImageView
+        android:id="@+id/fouls_stats_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fouls_stats_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_background" />
+
+    <ImageView
+        android:id="@+id/fouls_stats_left"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/fouls_stats_title"
+        app:layout_constraintEnd_toStartOf="@id/stats_middle_guideline"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_left" />
+
+    <ImageView
+        android:id="@+id/fouls_stats_right"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/fouls_stats_title"
+        app:layout_constraintStart_toEndOf="@id/stats_middle_guideline"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_right" />
+
+    <TextView
+        android:id="@+id/fouls_stats_left_value"
+        style="@style/BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/fouls_stats_background"
+        app:layout_constraintBottom_toBottomOf="@id/fouls_stats_background"
+        app:layout_constraintEnd_toStartOf="@id/fouls_stats_background"
+        android:layout_marginEnd="8dp"
+        tools:text="12"/>
+
+    <TextView
+        android:id="@+id/fouls_stats_right_value"
+        style="@style/BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/fouls_stats_background"
+        app:layout_constraintBottom_toBottomOf="@id/fouls_stats_background"
+        app:layout_constraintStart_toEndOf="@id/fouls_stats_background"
+        android:layout_marginStart="8dp"
+        tools:text="10"/>
+
+    <TextView
+        android:id="@+id/pass_accuracy_stats_title"
+        style="@style/TitleLarge"
+        app:layout_constraintTop_toTopOf="@id/fouls_stats_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Pass Accuracy"/>
+
+    <ImageView
+        android:id="@+id/pass_accuracy_stats_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/pass_accuracy_stats_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_background" />
+
+    <ImageView
+        android:id="@+id/pass_accuracy_stats_left"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/pass_accuracy_stats_title"
+        app:layout_constraintEnd_toStartOf="@id/stats_middle_guideline"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_left" />
+
+    <ImageView
+        android:id="@+id/pass_accuracy_stats_right"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/pass_accuracy_stats_title"
+        app:layout_constraintStart_toEndOf="@id/stats_middle_guideline"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_right" />
+
+    <TextView
+        android:id="@+id/pass_accuracy_stats_left_value"
+        style="@style/BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/pass_accuracy_stats_background"
+        app:layout_constraintBottom_toBottomOf="@id/pass_accuracy_stats_background"
+        app:layout_constraintEnd_toStartOf="@id/pass_accuracy_stats_background"
+        android:layout_marginEnd="8dp"
+        tools:text="12"/>
+
+    <TextView
+        android:id="@+id/pass_accuracy_stats_right_value"
+        style="@style/BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/pass_accuracy_stats_background"
+        app:layout_constraintBottom_toBottomOf="@id/pass_accuracy_stats_background"
+        app:layout_constraintStart_toEndOf="@id/pass_accuracy_stats_background"
+        android:layout_marginStart="8dp"
+        tools:text="10"/>
+
+    <TextView
+        android:id="@+id/expected_goals_stats_title"
+        style="@style/TitleLarge"
+        app:layout_constraintTop_toTopOf="@id/pass_accuracy_stats_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Expected Goals"/>
+
+    <ImageView
+        android:id="@+id/expected_goals_stats_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/expected_goals_stats_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_background" />
+
+    <ImageView
+        android:id="@+id/expected_goals_stats_left"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/expected_goals_stats_title"
+        app:layout_constraintEnd_toStartOf="@id/stats_middle_guideline"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_left" />
+
+    <ImageView
+        android:id="@+id/expected_goals_stats_right"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/expected_goals_stats_title"
+        app:layout_constraintStart_toEndOf="@id/stats_middle_guideline"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/stats_bar_right" />
+
+    <TextView
+        android:id="@+id/expected_goals_stats_left_value"
+        style="@style/BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/expected_goals_stats_background"
+        app:layout_constraintBottom_toBottomOf="@id/expected_goals_stats_background"
+        app:layout_constraintEnd_toStartOf="@id/expected_goals_stats_background"
+        android:layout_marginEnd="8dp"
+        tools:text="12"/>
+
+    <TextView
+        android:id="@+id/expected_goals_stats_right_value"
+        style="@style/BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/expected_goals_stats_background"
+        app:layout_constraintBottom_toBottomOf="@id/expected_goals_stats_background"
+        app:layout_constraintStart_toEndOf="@id/expected_goals_stats_background"
+        android:layout_marginStart="8dp"
+        tools:text="10"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

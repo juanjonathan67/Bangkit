@@ -10,4 +10,6 @@
     <color name="lime">#90E048</color>
     <color name="lightGrass">#70C048</color>
     <color name="darkGrass">#107800</color>
+    <color name="blue">#0000FF</color>
+    <color name="red">#FF0000</color>
 </resources>

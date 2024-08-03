@@ -13,3 +13,6 @@
 [submodule "CASION"]
 	path = CASION
 	url = https://github.com/juanjonathan67/CASION.git
+[submodule "Footy"]
+	path = Footy
+	url = https://github.com/juanjonathan67/Footy.git
